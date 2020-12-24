@@ -437,7 +437,3 @@ firmware_directories /vendor/firmware_mnt/image/ /vendor/firmware/
 /dev/tfa_rw               0660   system       system
 /dev/tfa_rpc              0660   system       system
 /dev/tfa_control          0660   system       system
-
-# Motor
-/dev/akm09970             0660   system       camera
-/dev/drv8846_dev          0660   system       camera

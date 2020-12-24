@@ -9,6 +9,8 @@ BOARD_VENDOR := xiaomi
 
 DEVICE_PATH := device/xiaomi/violet
 
+BUILD_BROKEN_DUP_RULES := true
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -46,6 +48,7 @@ BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 service_locator.enable=1 swiotlb=1 earlycon=msm_geni_serial,0x880000 loop.max_part=7 cgroup.memory=nokmem,nosocket
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE +=  androidboot.vbmeta.avb_version=1.0
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -59,10 +62,10 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/violet
 TARGET_KERNEL_CONFIG := vendor/violet-perf_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 BOARD_RAMDISK_OFFSET := 0x01000000
 
 # Platform
-TARGET_BOARD_PLATFORM := sm6150
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno612
 
 # APEX
@@ -90,8 +93,10 @@ USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
+TARGET_USE_QTI_BT_STACK := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 BOARD_HAVE_BLUETOOTH_QCOM := true
+TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
 
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
@@ -192,6 +197,7 @@ VENDOR_SECURITY_PATCH := 2020-11-01
 
 # Sepolicy
 TARGET_SEPOLICY_DIR := msmsteppe
+SELINUX_IGNORE_NEVERALLOWS := true
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public

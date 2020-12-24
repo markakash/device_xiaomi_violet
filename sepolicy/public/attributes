@@ -1,5 +1,4 @@
-hal_attribute_lineage(mlipay)
-
-hal_attribute_lineage(motor)
-
+hal_attribute(mlipay)
 hal_attribute_lineage(touchfeature)
+attribute hal_perf_server;
+attribute hal_perf;

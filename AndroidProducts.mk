@@ -6,8 +6,8 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_violet.mk
+    $(LOCAL_DIR)/p404_violet.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_violet-userdebug \
-    aosp_violet-user
+    p404_violet-userdebug \
+    p404_violet-user
